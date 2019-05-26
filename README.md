@@ -70,3 +70,9 @@ aspectos de costo y tolerancia a fallas.
 9. Plugin network: Usaremos de ejemplo kubenet que es un complemento de red muy básico y simple, solo para Linux. Kubenet crea un puente de Linux y crea un par de veth para cada pod con el extremo del host de cada par conectado.
 
 **Tabla comparativa Docker Swarm vs Kubernetes**  
+![](Capturas/tabla1.PNG)
+![](Capturas/tabla2.PNG)
+**Conclusion**  
+Kubernetes soporta mayores demandas con mayor complejidad, mientras que Docker Swarm ofrece una solución simple con la que se puede comenzar rápidamente. Docker Swarm ha sido bastante popular entre los desarrolladores que prefieren las implementaciones rápidas y la simplicidad. Al mismo tiempo, Kubernetes se utiliza en entornos de producción por varias empresas de Internet de alto perfil que ejecutan servicios populares.  
+
+Tanto Kubernetes como Docker Swarm pueden ejecutar muchos de los mismos servicios, pero pueden necesitar enfoques ligeramente diferentes para ciertos detalles. Por lo tanto, al aprender Kubernetes y Docker y compararlos para varias características, puede tomar una decisión sobre la elección de la herramienta adecuada para su organización de contenedores.
