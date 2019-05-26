@@ -21,7 +21,9 @@ Responder las preguntas acerca de orquestación de contenedores
 
 ### Actividades
 * Realice un gráfico donde muestre la arquitectura de docker swarm y kubernetes. Tenga en cuenta
-Incluya aspectos como las tecnologías empleadas para la comunicación de sus elementos, descubrimiento de servicio, entre otros
+Incluya aspectos como las tecnologías empleadas para la comunicación de sus elementos, descubrimiento de servicio, entre otros.  
+![](Capturas/swarn.png)
+
 * Crear una tabla comparativa con al menos 5 diferencias entre Docker Swarm y Kubernetes
 * Mencione las tecnologías de orquestación de contenedores nativas con kubernetes para al menos tres proveedores de servicios en la nube. Describa sus principales características y limitaciones
 * Describa las implicaciones a nivel de operaciones de emplear una solución de kubernetes nativa con respecto a desplegar kubernetes manualmente a través de scripts, por ejemplo: KOPS. Tenga en cuenta
