@@ -46,5 +46,27 @@ aspectos de costo y tolerancia a fallas.
   
 6. Docker Compose: esta es una herramienta para definir y ejecutar aplicaciones Docker de múltiples contenedores. Esta herramienta toma un archivo yml de configuración simple y despliega los contenedores como un manifiesto. Es la herramienta de implementación para utilizar las nuevas funciones de red de host múltiple que permiten a los nodos de Swarm tener aplicaciones que se ejecutan en hosts distribuidos. Compose también maneja estrategias de colocación para asegurar que sus contenedores se distribuyan de manera uniforme (o no) a través de los Nodos de Swarm. Esto permite la redundancia de contenedores en el nivel de host, lo que es bueno para la capacidad de recuperación de la producción.  
 
-**Kubernetes architecture**
+**Kubernetes architecture**  
+![](Capturas/kubernetes.PNG)
 
+
+
+1. ETCD: es un almacén de valores clave coherente y de alta disponibilidad que se utiliza como almacén de respaldo de Kubernetes para todos los datos del clúster.
+
+2. Pods:es un grupo de contenedores que se implementan juntos en el mismo host.
+
+3. Hubelet:es el "agente de nodo" primario que se ejecuta en cada nodo, garantiza que los contenedores descritos en esos PodSpecs estén funcionando y en buen estado.
+
+4. Api server:valida y configura datos para los objetos de API que incluyen pods, servicios, controladores de replicación y otros. El servidor API realiza las operaciones REST y proporciona la interfaz al estado compartido del clúster a través del cual interactúan todos los demás componentes.
+
+5. Scheduler:es una función de carga de trabajo rica en políticas, con reconocimiento de topología y que afecta significativamente la disponibilidad, el rendimiento y la capacidad.
+
+6. Controller manager:es un demonio que integra los bucles de control del núcleo enviados con Kubernetes. Vigila el estado compartido del clúster a través del apiserver y realiza cambios intentando mover el estado actual hacia el estado deseado.
+
+7. cAdvisor:es un agente de análisis de rendimiento y uso de recursos de contenedor de código abierto.
+
+8. Kube-proxy: Esto refleja los servicios tal como se definen en la API de Kubernetes en cada nodo.
+
+9. Plugin network: Usaremos de ejemplo kubenet que es un complemento de red muy básico y simple, solo para Linux. Kubenet crea un puente de Linux y crea un par de veth para cada pod con el extremo del host de cada par conectado.
+
+**Tabla comparativa Docker Swarm vs Kubernetes**  
