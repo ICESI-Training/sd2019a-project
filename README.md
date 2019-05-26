@@ -78,4 +78,10 @@ Kubernetes soporta mayores demandas con mayor complejidad, mientras que Docker S
 Tanto Kubernetes como Docker Swarm pueden ejecutar muchos de los mismos servicios, pero pueden necesitar enfoques ligeramente diferentes para ciertos detalles. Por lo tanto, al aprender Kubernetes y Docker y compararlos para varias características, puede tomar una decisión sobre la elección de la herramienta adecuada para su organización de contenedores.
 ### Tabla comparativa Datadog vs Prometheus  
 ![](Capturas/tabla11.PNG)  
-![](Capturas/tabla12.PNG)
+![](Capturas/tabla12.PNG)  
+**Conlusiones**  
+En general, Datadog es un poco más fácil de instalar que Prometheus. Sin embargo, tampoco es demasiado difícil.
+Grafana y Datadog son muy similares en sus capacidades de visualización. Ambos tienen todas las características que necesita para comenzar y le permiten armar paneles que lo ayudarán a monitorear su clúster Kubernetes.
+Puede manipular la configuración de Prometheus para exponer los eventos de Kubernetes, pero la solución no es óptima. Datadog tiene un método soportado oficialmente para hacer esto. Sin embargo, la interfaz de usuario de Datadog para ver eventos deja mucho que desear.
+El servicio que seleccione dependerá de su caso de uso. Si desea tener un control estricto sobre qué alertas se envían a su equipo, Prometheus y AlertManager son probablemente su mejor apuesta.
+Tanto Prometheus como Datadog son soluciones de monitoreo robustas y con todas las funciones. Sin embargo, requieren una configuración extensa para obtener el máximo beneficio de la supervisión. 
