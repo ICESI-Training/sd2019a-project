@@ -126,4 +126,17 @@ En general, Datadog es un poco más fácil de instalar que Prometheus. Sin embar
 Grafana y Datadog son muy similares en sus capacidades de visualización. Ambos tienen todas las características que necesita para comenzar y le permiten armar paneles que lo ayudarán a monitorear su clúster Kubernetes.
 Puede manipular la configuración de Prometheus para exponer los eventos de Kubernetes, pero la solución no es óptima. Datadog tiene un método soportado oficialmente para hacer esto. Sin embargo, la interfaz de usuario de Datadog para ver eventos deja mucho que desear.
 El servicio que seleccione dependerá de su caso de uso. Si desea tener un control estricto sobre qué alertas se envían a su equipo, Prometheus y AlertManager son probablemente su mejor apuesta.
-Tanto Prometheus como Datadog son soluciones de monitoreo robustas y con todas las funciones. Sin embargo, requieren una configuración extensa para obtener el máximo beneficio de la supervisión. 
+Tanto Prometheus como Datadog son soluciones de monitoreo robustas y con todas las funciones. Sin embargo, requieren una configuración extensa para obtener el máximo beneficio de la supervisión.   
+## Referencias
+
+[Amazon Elastic Container Service for Kubernetes](https://aws.amazon.com/es/eks/?sc_channel=PS&sc_campaign=acquisition_LATAM&sc_publisher=google&sc_medium=ACQ-P%7CPS-GO%7CNon-Brand%7CSU%7CCompute%7CEKS%7CLATAM%7CEN%7CText&sc_content=install_e&sc_detail=kubernetes&sc_category=Compute&sc_segment=289492809085&sc_matchtype=e&sc_country=LATAM&s_kwcid=AL!4422!3!289492809085!e!!g!!kubernetes&ef_id=EAIaIQobChMI_IbfpY684gIVDFqGCh3e0QUTEAAYASAAEgIOIPD_BwE:G:s "Amazon EKS")  
+[Orquestación de contenedores para producción Kubernetes](https://kubernetes.io/es/ "Amazon EKS")  
+[What is kops?](https://github.com/kubernetes/kops "Amazon EKS")  
+[How to Monitor Your Kubernetes Cluster: Prometheus vs Datadog](https://www.bluematador.com/blog/how-to-monitor-your-kubernetes-cluster-prometheus-vs-datadog
+"Amazon EKS")  
+[CASE STUDY:Pinterest](https://kubernetes.io/case-studies/pinterest/ "Amazon EKS")  
+[CASE STUDY:BlackRock](https://kubernetes.io/case-studies/blackrock/ "Amazon EKS")  
+[CASE STUDY:Ebay](https://www.nextplatform.com/2015/11/12/inside-ebays-shift-to-kubernetes-and-containers-atop-openstack/ "Amazon EKS")  
+[Docker in swarm mode](https://docs.docker.com/engine/swarm/ "Amazon EKS")  
+
+
