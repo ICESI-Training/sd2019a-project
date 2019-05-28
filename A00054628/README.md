@@ -76,6 +76,16 @@ Responder las preguntas acerca de orquestación de contenedores
 6. Docker Daemon: Un proceso que gestiona la gestión de contenedores en un único host o máquina virtual.  
 
 ### 2 Crear una tabla comparativa con al menos 5 diferencias entre Docker Swarm y Kubernetes.  
+
+**Características** | Kubernetes | Docker Swarm
+--------------- | ---------- | ------------
+**Definición de la aplicación** | Las aplicaciones se pueden implementar usando una combinación de pods, implementaciones y servicios (o "microservicios"). | Las aplicaciones se pueden implementar como servicios (o "microservicios") en un clúster Swarm. Las aplicaciones de varios contenedores pueden especificarse utilizando archivos YAML.  
+**Construcciones de escalabilidad de aplicaciones** | Cada nivel de aplicación se define como un pod y se puede escalar cuando se administra mediante una implementación, que se especifica en YAML, la escala puede ser manual o automatizada. | Los servicios se pueden escalar utilizando plantillas Docker Compose YAML.  
+**Alta disponibilidad** | Las implementaciones permiten que los pods se distribuyan entre los nodos para proporcionar Alta Disponibilidad, tolerando así las fallas de la aplicación. | Los servicios se pueden replicar entre los nodos de Swarm. Los administradores de Swarm son responsables de todo el clúster y administran los recursos de los nodos de trabajadores.  
+**Balanceo de carga** | Los pods se exponen a través de un servicio, que se puede usar como un equilibrador de carga dentro del clúster.  | El modo Swarm tiene un componente DNS que se puede usar para distribuir solicitudes entrantes a un nombre de servicio. Los servicios pueden ejecutarse en los puertos especificados por el usuario o pueden asignarse automáticamente.  
+**Descubrimiento del servicio** | Los servicios se pueden encontrar utilizando variables de entorno o DNS.
+Kubelet agrega un conjunto de variables de entorno cuando se ejecuta un pod. | El nodo de Swarm Manager asigna a cada servicio un nombre DNS único y equilibrios de carga que ejecutan contenedores. Las solicitudes a los servicios se equilibran de carga a los contenedores individuales a través del servidor DNS integrado en el Enjambre.  
+
 ### 3 Mencione las tecnologías de orquestación de contenedores nativas con kubernetes para al menos tres proveedores de servicios en la nube. Describa sus principales características y limitaciones.  
 ### 4 Describa las implicaciones a nivel de operaciones de emplear una solución de kubernetes nativa con respecto a desplegar kubernetes manualmente a través de scripts, por ejemplo: KOPS. Tenga en cuenta aspectos de costo y tolerancia a fallas.  
 ### 5 Crear una tabla comparativa con al menos 5 diferencias entre el monitoreo con Datadog y el monitoreo con Prometheus. Incluya aspectos como costo, obtención de métricas, alertas, entre otros
