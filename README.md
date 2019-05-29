@@ -18,6 +18,20 @@ Incluya aspectos como las tecnologías empleadas para la comunicación de sus el
 
 ![](Imagenes/Kubernetes.png) 
 
+
+**API server:** Es el que expone la API de kubernetes, se utiliza como punto de entrada de los comandos REST para controlar el cluster. Además, procesa valida y ejecuta todas las solicitudes REST.
+
+**Scheduler:** Observa los pods recién creados que no registran un nodo asignado y selecciona un nodo para que estos se puedan  ejecutar. Tambien tiene las siguientes funciones:
+          - Tiene en cuenta los recursos disponibles en cada nodo del clúster.
+          - Toma en cuenta los recursos necesarios para que se ejecute un determinado servicio.
+
+Lo anterior sirve para saber dónde desplegar cada pod dentro del clúster.
+
+
+
+
+
+
 ![](Imagenes/DockerSwarm.png) 
 
 
@@ -31,3 +45,5 @@ aspectos de costo y tolerancia a fallas.
 * https://cloud.google.com/
 * https://azure.microsoft.com/en-us/
 * https://aws.amazon.com/
+* https://aprenderdevops.com/arquitectura-de-kubernetes/
+* https://www.adictosaltrabajo.com/2015/12/03/docker-compose-machine-y-swarm/
