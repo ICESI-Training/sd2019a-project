@@ -37,6 +37,10 @@ hay diferentes aspectos que analizar por ejemplo:
 
 **Configuración de clúster** Configurar un clúster con EKS es bastante complicado y tiene algunos requisitos previos, en cambio con Kops que es una herramienta CLI solo debe instalarse en su máquina local junto con kubectl para hacer que un clúster se ejecute tan simple como ejecutar el comando clúster kops create con todas las opciones necesarias.
 
+**Gestión de clusters** La configuración del cluster es un evento raro. Al evaluar una solución que afectará a una parte crítica de su infraestructura como Kubernetes, también debe considerar cómo es escalar nodos, realizar actualizaciones de clústeres e integrarse con otros servicios en el futuro.
+
+**Seguridad** La seguridad debe ser una de las principales preocupaciones de todos los administradores de Kubernetes. A medida que el ecosistema de Kubernetes madura, se encontrarán más vulnerabilidades. La velocidad a la que encontramos nuevos problemas de seguridad con Kubernetes está aumentando , y este problema no puede ser ignorado
+
 ### Referencias
 
 * https://twitter.com/meinardi/status/707935835400884224
