@@ -67,5 +67,6 @@ es por ello que usar una solución nativa de kubernetes siempre sera una mejor o
 * https://kubernetes.io/docs/concepts/architecture/cloud-controller/
 * https://www.bluematador.com/blog/kubernetes-on-aws-eks-vs-kops
 * https://rancher.com/comparing-10-container-monitoring-solutions-rancher/
+* https://www.slideshare.net/rajdeep/docker-swarm-introduction
 
 
