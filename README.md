@@ -41,12 +41,18 @@ hay diferentes aspectos que analizar por ejemplo:
 
 **Seguridad** La seguridad debe ser una de las principales preocupaciones de todos los administradores de Kubernetes. A medida que el ecosistema de Kubernetes madura, se encontrarán más vulnerabilidades. La velocidad a la que encontramos nuevos problemas de seguridad con Kubernetes está aumentando , y este problema no puede ser ignorado
 
+es por ello que usar una solución nativa de kubernetes siempre sera una mejor opción.
+
+
+
+
+
 ### Referencias
 
 * https://twitter.com/meinardi/status/707935835400884224
 * https://thenewstack.io/kubernetes-steering-the-ship-with-cloud-native-management/
 * https://kubernetes.io/docs/concepts/cluster-administration/networking/
 * https://kubernetes.io/docs/concepts/architecture/cloud-controller/
-
+* https://www.bluematador.com/blog/kubernetes-on-aws-eks-vs-kops
 
 
