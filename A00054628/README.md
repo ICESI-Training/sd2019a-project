@@ -104,9 +104,36 @@ Responder las preguntas acerca de orquestación de contenedores
   * Grupos de contenedores de depuración.
   
 * **Limitaciones:**  
+
   * GKE todavía se considera nuevo. Se podría mejorar la documentación y el apoyo. Tampoco está bien integrado en el resto de Google Cloud Platform.  
 
   * Desde un punto de vista más técnico, algunos se quejan de que la capacidad de configuración de GKE es limitada, incluido el control limitado de la autenticación, la autorización o el control de admisión.   
+  
+2. **Amazon EKS:**  
+
+* El servicio Amazon Elastic Container Service for Kubernetes (EKS) es un servicio gestionado por Kubernetes que facilita la ejecución de Kubernetes en AWS sin necesidad de instalar, operar y mantener el plano de control de Kubernetes. Amazon EKS está certificado como Kubernetes, por lo que las aplicaciones existentes que se ejecutan en Kubernetes son compatibles con Amazon EKS.  
+
+* Amazon EKS proporciona un plano de control escalable y altamente disponible que corre a través de múltiples zonas de disponibilidad de AWS. El servicio Amazon EKS gestiona automáticamente la disponibilidad y escalabilidad de los servidores de la API de Kubernetes y la capa de persistencia de etcd para cada clúster. Amazon EKS ejecuta el plano de control de Kubernetes en tres zonas de disponibilidad para asegurar una alta disponibilidad, y detecta y reemplaza automáticamente a los nodos maestros "unhealthy".  
+
+* **Limitaciones:**  
+
+   * No es dinámico: Uno mismo debe ocuparse de la administración. Esto puede suponer un reto para los modelos dinámicos multi-nube, en los que las aplicaciones deben moverse rápida y fácilmente entre diferentes proveedores de cloud computing.  
+   
+   * No hay integración: Amazon EKS no ofrece integraciones con otros servicios gestionados de Kubernetes.  
+   
+3. **IBM Cloud Kubernetes:**  
+
+* Actualizaciones rápidas, altamente escalables.
+
+* Los despliegues son rápidos. 
+
+* Tolerante a fallos.
+
+* **Limitaciones:**  
+
+  * Es muy poco fiable. Los nodos y máquinas muchas veces se caen aleatoriamente sin previo aviso o mensajes de error útiles.  
+
+  * La documentación no es buena.  
 
 ### 4 Describa las implicaciones a nivel de operaciones de emplear una solución de kubernetes nativa con respecto a desplegar kubernetes manualmente a través de scripts, por ejemplo: KOPS. Tenga en cuenta aspectos de costo y tolerancia a fallas.  
 
@@ -128,7 +155,27 @@ Kops simplifica de manera significativa la configuración y gestión de los clú
 
 **KOPS vs EKS: Cluster Setup**  
 
-*EKS:* Configurar un clúster con EKS es bastante complicado y tiene algunos requisitos previos. Se debe configurar y utilizar tanto el AWS CLI como el aws-iam-authenticator para autenticarse en su clúster, de modo que la configuración de los permisos y usuarios de IAM tiene cierta sobrecarga. Dado que EKS no crea nodos de trabajo automáticamente con su clúster EKS, también se debe administrar ese proceso.
+*EKS:* Configurar un clúster con EKS es bastante complicado y tiene algunos requisitos previos. Se debe configurar y utilizar tanto el AWS CLI como el aws-iam-authenticator para autenticarse en el clúster, de modo que la configuración de los permisos y usuarios de IAM tiene cierta sobrecarga. Dado que EKS no crea nodos de trabajo automáticamente con nuestro clúster EKS, también se debe administrar ese proceso.
+
+*KOPS:* Kops es una herramienta CLI y debe ser instalada en su máquina local junto con kubectl. Ejecutar un cluster es bastante simple, es sòlo ejecutar el comando ***kops create cluster con todas*** las opciones necesarias. Kops gestionará la mayor parte de los recursos de AWS necesarios para ejecutar un clúster de Kubernetes, y trabajará con un VPC nuevo o ya existente. A diferencia de EKS, kops también creará nodos maestros como instancias de EC2, y se puede acceder a esos nodos directamente y hacer modificaciones. Con acceso a los nodos maestros, se puede elegir qué capa de red utilizar, elegir el tamaño de las instancias maestras y supervisar directamente los nodos maestros. También està la opción de configurar un clúster con un solo maestro, lo que podría ser deseable para entornos de desarrollo y prueba donde la alta disponibilidad no es un requisito.  
+
+**KOPS vs EKS: Cluster Management**  
+
+*EKS:* EKS tiene una forma prescrita de actualizar la versión de Kubernetes del plano de control con una interrupción mínima. Sus nodos de trabajo pueden ser actualizados usando un nuevo AMI para la nueva versión de Kubernetes, creando un nuevo grupo de trabajo, y luego migrando la carga de trabajo a los nuevos nodos. La ampliación del clúster con EKS es simple, sólo es añadir más nodos de trabajo. Dado que el plano de control está totalmente gestionado, no hay necesidad de preocuparnos por añadir o actualizar los tamaños maestros cuando el clúster se agrande.  
+
+*KOPS:*  KOPS es muy bueno para crear un clúster de manera ràpida, el problema es que hay que hacer mucho trabajo para actualizar y reemplazar los nodos maestros de las nuevas versiones de Kubernetes. Actualizar una cantidad de nodos de AWS con KOPS puede tomar menos de 1 día, pero si se quiere que la interrupción sea mínima, es mejor crear un nuevo cluster en una nueva VPC con KOPS.  
+
+**Tabla comparativa:**  
+
+Kubernetes | Amazon EKS
+---------- | ----------
+Soporte para varias versiones de Kubernetes | No soporta todas las versiones de Kubernetes  
+La instrumentación inicial, por defecto, será no añadir ningún RBAC o gestión de usuarios | Estrechamente acoplado con Amazon IAM, y aprovechar el autenticador AWS de código abierto para el control de acceso  
+Totalmente manejado por usted mismo, puede ser una ventaja o desventaja para el uso futuro | Gestionado por AWS  
+Hay que asegurarse de que el cluster etcd estè levantado y en ejecución | Gestionado por AWS  
+Asegurarse de que los servicios de los nodos maestro estén en ejecución (Kube api server, kube DNS, kube-scheduler etc) | Gestionado por AWS  
+
+Como siempre, la implementaciñon de una de estas herramientas depende de las necesidades del usuario, en mi opinión considero que Amazon EKS es mucho mejor debido a que ya tiene automatizada varias tareas que depronto pueden ser un poco molestas para nosotros.  
 
 ### 5 Crear una tabla comparativa con al menos 5 diferencias entre el monitoreo con Datadog y el monitoreo con Prometheus. Incluya aspectos como costo, obtención de métricas, alertas, entre otros  
 
