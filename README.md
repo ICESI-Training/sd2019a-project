@@ -1,9 +1,9 @@
 # sd2019a-project
-Proyecto Sistemas Distribuidos
+# Proyecto Sistemas Distribuidos
 
-**nombre:** edisson guerrero
-**codigo:** A00328068
-**carrera:** INGENIERÍA TELEMÁTICA
+* **nombre:** edisson guerrero
+* **codigo:** A00328068
+* **carrera:** INGENIERÍA TELEMÁTICA
 
 
 ## 1) arquitectura de docker swarm y kubernetes
