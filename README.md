@@ -43,6 +43,7 @@ hay diferentes aspectos que analizar por ejemplo:
 
 es por ello que usar una solución nativa de kubernetes siempre sera una mejor opción.
 
+## 5) monitoreo con Datadog y el monitoreo con Prometheus
 
 
 
