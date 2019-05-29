@@ -8,7 +8,14 @@
 
 ## 1) arquitectura de docker swarm y kubernetes
 
+**kubernetes**
+
 ![alt text](https://github.com/ediguerrero/sd2019a-project/blob/master/images/1.jpg)
+
+**docker swarm** 
+
+![alt text](https://github.com/ediguerrero/sd2019a-project/blob/master/images/3.jpg)
+
 
 ## 2) tabla comparativa entre Docker Swarm y Kubernetes 
 
