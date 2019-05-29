@@ -87,35 +87,49 @@ Responder las preguntas acerca de orquestación de contenedores
 
 ### 3 Mencione las tecnologías de orquestación de contenedores nativas con kubernetes para al menos tres proveedores de servicios en la nube. Describa sus principales características y limitaciones.  
 
-1. **Pokemon GO:**  
+1. **Google Cloud GKE:**  
 
-![SI_SmartDevice_PokemonGo_image1600w](https://user-images.githubusercontent.com/23371077/58519647-28ae1000-817a-11e9-86a9-31166067bee9.jpg)  
+* Kubernetes Engine es un entorno gestionado y listo para la producción para desplegar aplicaciones en contenedores. Aporta nuestras últimas innovaciones en productividad de desarrolladores, eficiencia de recursos, operaciones automatizadas y flexibilidad de código abierto para acelerar el tiempo de lanzamiento al mercado.  
 
-Pokemon Go es una apliación móvil que usa muchos servicios de Google cloud. Más allá de ser un fenómeno global, Pokémon GO es uno de los ejemplos más interesantes de desarrollo basado en contenedores "in the wild". La lógica de aplicación del juego se ejecuta en Google Container Engine (GKE), impulsado por el proyecto Kubernetes de código abierto. Niantic eligió a GKE por su capacidad de orquestar su grupo de contenedores a escala planetaria, liberando a su equipo para que se centre en implementar cambios en directo para sus jugadores. De esta forma, Niantic utilizó Google Cloud para convertir Pokémon GO en un servicio para millones de jugadores, adaptándose y mejorando continuamente.  
+* Kubernetes Engine se basa en la experiencia de Google de ejecutar servicios como Gmail y YouTube en contenedores durante más de 12 años. El Motor de Kubernetes permite el despliegue de Kubernetes eliminando por completo la necesidad de instalar, administrar y operar nuestros propios clústeres de Kubernetes.  
 
-Una de las hazañas técnicas más sorprendentes realizadas por Niantic y el equipo de CRE de Google fue actualizar a una nueva versión de GKE que permitiría añadir más de mil nodos adicionales a su clúster de contenedores, en preparación para el tan esperado lanzamiento en Japón. Se tomaron medidas para no interrumpir a los jugadores existentes, pasando a la nueva versión mientras millones de nuevos jugadores se inscribían y se unían al mundo de los juegos Pokémon. Además de esta actualización, los ingenieros de Niantic y Google trabajaron en conjunto para reemplazar el Balanceador de Carga de Red, desplegando el nuevo y más sofisticado Balanceador de Carga HTTP/S en su lugar. El Load Balancer HTTP/S es un sistema global diseñado para el tráfico HTTPS, que ofrece mucho más control, conexiones más rápidas a los usuarios y un mayor rendimiento en general, lo que se adapta mejor a la cantidad y al tipo de tráfico que veía Pokémon GO.
+* Kubernetes Engine permite un rápido desarrollo e iteracción de aplicaciones al facilitar la implementación, actualización y administración de nuestras aplicaciones y servicios.  
 
-2. **The New York Times:**  
+* Las organizaciones suelen utilizar Google Kubernetes Engine para:
 
-![20190205120119 0](https://user-images.githubusercontent.com/23371077/58520045-a7577d00-817b-11e9-8533-2ba668b7e55f.jpg)  
+  * Crear o cambiar el tamaño de los clústeres de contenedores Docker.
+  * Crear módulos de contenedores, controladores de replicación, trabajos, servicios o balanceadores de carga.
+  * Redimensionar controladores de aplicaciones.
+  * Actualizar y actualizar clústeres de contenedores.
+  * Grupos de contenedores de depuración.
+  
+* **Limitaciones:**  
+  * GKE todavía se considera nuevo. Se podría mejorar la documentación y el apoyo. Tampoco está bien integrado en el resto de Google Cloud Platform.  
 
-***Problema**: Cuando la empresa decidió hace unos años abandonar sus centros de datos, sus primeras implementaciones en la nube pública fueron aplicaciones más pequeñas y menos críticas gestionadas en máquinas virtuales. "Comenzamos a construir más y más herramientas, y en algún momento nos dimos cuenta de que estábamos haciendo un mal servicio al tratar a Amazon como otro centro de datos", dice Deep Kapadia, Director Ejecutivo de Ingeniería del The New York Times. Kapadia fue contratada para liderar un equipo de ingeniería de entrega que se encargaría de "diseñar las abstracciones que nos ofrecen los proveedores de cloud computing".*  
-
-***Solución:*** El equipo decidió utilizar Google Cloud Platform y su oferta de Kubernetes-as-a-service, GKE.  
-
-**Impacto:** La velocidad de entrega aumentó al implementar Kubernetes. Las implementaciones que realizaban con máquinas virtuales tardaban aproximadamente 45 minutos para desplegar el servicio, con Kubernetes, ese tiempo fue "de unos pocos segundos a un par de minutos" (Gerente de Ingeniería Brian Balser). Además, los equipos que solían desplegar en horarios semanales o tenían que coordinar horarios con el equipo de infraestructura, ahora, cada equipo despliega sus actualizaciones de forma independiente, y pueden hacerlo diariamente cuando es necesario. La adopción de tecnologías Cloud Native Computing Foundation permite un enfoque más unificado para la implementación en todo el personal de ingeniería y la portabilidad para la empresa.
-
-3. **IBM:**  
-
-![1200px-IBM_logo svg](https://user-images.githubusercontent.com/23371077/58520279-9824ff00-817c-11e9-8e5b-0e2f8381fdd9.png)  
-
-IBM Cloud ofrece funcionalidad de cloud pública, privada e híbrida a través de un diverso conjunto de tiempos de ejecución, desde su función basada en OpenWhisk como servicio (FaaS), Kubernetes y contenedores gestionados, hasta la plataforma Cloud Foundry como servicio (PaaS). Estos tiempos de ejecución se combinan con la potencia de las tecnologías empresariales de la empresa, como MQ y DB2, su moderna inteligencia artificial (IA) Watson y los servicios de análisis de datos. Los usuarios de IBM Cloud pueden explotar las capacidades de más de 170 servicios nativos de cloud computing diferentes de su catálogo, incluyendo capacidades como la API y los servicios de datos de Weather Company de IBM. A finales de 2017, el equipo de IBM Cloud Container Registry quería crear un servicio de confianza en la imagen.  
-
-El trabajo en este nuevo servicio culminó con su disponibilidad pública en la nube de IBM en febrero de 2018. El servicio de confianza en la imagen, llamado Portieris, se basa completamente en el proyecto de código abierto de la Cloud Native Computing Foundation (CNCF), según Michael Hough, desarrollador de software del equipo de IBM Cloud Container Registry. Portieris es un controlador de admisión de Kubernetes para hacer cumplir la confianza en el contenido. Los usuarios pueden crear políticas de seguridad de imagen para cada espacio de nombres de Kubernetes, o a nivel de clúster, y aplicar diferentes niveles de confianza para diferentes imágenes. Portieris es una parte clave de la historia de confianza de IBM, ya que permite a los usuarios consumir la oferta notarial de la empresa desde sus clusters IKS. La oferta es que el servidor Notary se ejecuta en la nube de IBM, y Portieris se ejecuta dentro del clúster IKS. Esto permite a los usuarios hacer que su cluster IKS verifique que la imagen desde la que están cargando contenedores contiene exactamente lo que esperan que contenga, y Portieris es lo que permite a un cluster IKS aplicar esa verificación.  
-
-La intención de IBM al ofrecer un servicio gestionado de contenedores y registro de imágenes de Kubernetes es proporcionar una plataforma de extremo a extremo totalmente segura para sus clientes empresariales. "La firma de imágenes es una parte clave de esa oferta, y nuestro equipo de registro de contenedores vio a Notary como la forma de facto de implementar esa capacidad en el ecosistema actual de muelles y contenedores", dice Hough. La compañía no había ofrecido antes la firma de imágenes, y Notary es la herramienta que utilizó para implementar esa capacidad. "Teníamos un Registro Docker multi-inquilino con alojamiento privado de imágenes", dice Hough. "El Registro Docker utiliza hashes para asegurar que el contenido de la imagen es correcto, y los datos están encriptados tanto en vuelo como en reposo. Pero no ofrece ninguna garantía de quién empujó una imagen. Usamos Notario para permitir a los usuarios firmar imágenes en sus espacios de nombres de registro privados si así lo desean".  
+  * Desde un punto de vista más técnico, algunos se quejan de que la capacidad de configuración de GKE es limitada, incluido el control limitado de la autenticación, la autorización o el control de admisión.   
 
 ### 4 Describa las implicaciones a nivel de operaciones de emplear una solución de kubernetes nativa con respecto a desplegar kubernetes manualmente a través de scripts, por ejemplo: KOPS. Tenga en cuenta aspectos de costo y tolerancia a fallas.  
+
+Para ello vamos a compara KOPS contra AWS EKS.  
+
+**EKS**  
+
+![bluematador-aws-EKS](https://user-images.githubusercontent.com/23371077/58520877-8a24ad80-817f-11e9-8387-49d5dd4004e6.png)  
+
+Amazon EKS se lanzó en junio de 2018, este se describe como un servicio de Kubernetes altamente disponible, escalable y seguro. EKS administra completamente sólo el plano de control de Kubernetes (nodos maestros, etcd, api server), por  $0.20 por hora o ~$145 por mes. La desventaja es que no tiene acceso a los nodos maestros y no puede hacer ninguna modificación en el plano de control.
+
+**KOPS**  
+
+![kops](https://user-images.githubusercontent.com/23371077/58520937-dd96fb80-817f-11e9-9f4b-28d396dd204b.jpg)  
+
+Es una herramienta de CLI para "Instalación, Actualizaciones y Gestión de K8s de Grado de Producción". Kops ha existido desde finales de 2016, mucho antes de que existiera EKS.  
+
+Kops simplifica de manera significativa la configuración y gestión de los clústeres de Kubernetes en comparación con la configuración manual de los nodos maestros y workers. Administra Route53, AutoScaling Groups, ELBs para el api server, grupos de seguridad, bootstrapping maestro, bootstrapping de nodos y actualizaciones de rodamiento para su cluster. Dado que kops es una herramienta de código abierto de uso completamente gratuito, uno mismo es responsable de pagar y mantener la infraestructura creada por kops para gestionar el clúster de Kubernetes.  
+
+**KOPS vs EKS: Cluster Setup**  
+
+*EKS:* Configurar un clúster con EKS es bastante complicado y tiene algunos requisitos previos. Se debe configurar y utilizar tanto el AWS CLI como el aws-iam-authenticator para autenticarse en su clúster, de modo que la configuración de los permisos y usuarios de IAM tiene cierta sobrecarga. Dado que EKS no crea nodos de trabajo automáticamente con su clúster EKS, también se debe administrar ese proceso.
+
 ### 5 Crear una tabla comparativa con al menos 5 diferencias entre el monitoreo con Datadog y el monitoreo con Prometheus. Incluya aspectos como costo, obtención de métricas, alertas, entre otros  
 
 **Características**| Prometheus | Datadog | Conclusión    
@@ -134,3 +148,8 @@ https://www.learnitguide.net/2018/08/what-is-kubernetes-learn-kubernetes.html
 https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/  
 https://www.nubersia.com/es/blog/kubernetes-vs-docker-swarm/  
 https://www.bluematador.com/blog/how-to-monitor-your-kubernetes-cluster-prometheus-vs-datadog  
+https://kubernetes.io/case-studies/ibm/  
+https://kubernetes.io/case-studies/newyorktimes/  
+https://cloud.google.com/blog/products/gcp/bringing-pokemon-go-to-life-on-google-cloud  
+https://kubernetes.io/case-studies/  
+
