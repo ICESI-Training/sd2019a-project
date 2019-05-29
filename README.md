@@ -24,6 +24,19 @@ Proyecto Sistemas Distribuidos
 
 Kubernetes no solo habilita todas las tecnologías descritas anteriormente, sino que también actúa como el " plano de control " para los sistemas nativos de la nube. Todo se logra por medio de su infraestuctura en planos mencionados en el diagrama de la pregunta 1 : Plano de datos, Plano de control, Plano de administración
 
+## 4) solución de kubernetes nativa vs scripts
+
+Existen tres métodos populares para ejecutar Kubernetes en AWS: configurar manualmente todo en instancias de EC2, usar Kops para administrar su clúster o usar Amazon EKS para administrar su clúster. Administrar un clúster de Kubernetes en AWS sin ninguna herramienta es un proceso complicado que no se recomienda para la mayoría de los administradores, por lo que nos centraremos en el uso de EKS o Kops.
+
+EKS Elastic Container Service para Kubernetes, se describe como un "Servicio de Kubernetes altamente disponible, escalable y seguro". Este tipo de descripción en el espacio de Kubernetes podría llevarlo a creer que puede tener una configuración de clúster de Kubernetes con un solo clic, y volvería a equivocarse. En su lugar, EKS administra completamente solo el plano de control de Kubernetes (nodos maestros, etcd, servidor api), por una tarifa de uso fija de $ 0.20 por hora o ~ $ 145 por mes. La desventaja de esto es que no tiene acceso a los nodos maestros y no puede realizar ninguna modificación en el plano de control.
+ En cambio Kubernetes Operations (kops) es una herramienta CLI para “Instalación, actualizaciones y administración de K8 de grado de producción”. Kops ha existido desde finales de 2016, mucho antes de que existiera EKS.
+
+Kops simplifica significativamente la configuración y administración del clúster Kubernetes en comparación con la configuración manual de los nodos maestro y de trabajo. Administra Route53, los grupos de AutoScaling, los ELB para el servidor de la API, los grupos de seguridad, el arranque maestro, el arranque del nodo y las actualizaciones continuas de su clúster. Dado que kops es una herramienta de código abierto, es de uso completamente gratuito, pero usted es responsable de pagar y mantener la infraestructura subyacente creada por kops para administrar su clúster Kubernetes.
+
+hay diferentes aspectos que analizar por ejemplo:
+
+**Configuración de clúster** Configurar un clúster con EKS es bastante complicado y tiene algunos requisitos previos, en cambio con Kops que es una herramienta CLI solo debe instalarse en su máquina local junto con kubectl para hacer que un clúster se ejecute tan simple como ejecutar el comando clúster kops create con todas las opciones necesarias.
+
 ### Referencias
 
 * https://twitter.com/meinardi/status/707935835400884224
