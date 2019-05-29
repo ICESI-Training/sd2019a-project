@@ -16,8 +16,9 @@
 * Realice un gráfico donde muestre la arquitectura de docker swarm y kubernetes. Tenga en cuenta
 Incluya aspectos como las tecnologías empleadas para la comunicación de sus elementos, descubrimiento de servicio, entre otros
 
-![](Imagenes/volumes3.png) 
+![](Imagenes/kubernetes.png) 
 
+![](Imagenes/DockerSwarm.png) 
 
 
 * Crear una tabla comparativa con al menos 5 diferencias entre Docker Swarm y Kubernetes
