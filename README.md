@@ -39,9 +39,16 @@ Lo anterior sirve para saber dónde desplegar cada pod dentro del clúster.
 
 **Pods:** Un pod es grupo de uno o más contenedores y una especificación sobre cómo ejecutar los contenedores.
 
+**kube-proxy:** Es un proxy de red y balnaceador de carga enrutando el trafico hacia el contenedor correcto, teniendo en cuenta la dirección IP y el numero de puerto. 
+
 
 
 ![](Imagenes/DockerSwarm.png) 
+
+
+**Swarm Master:** Es el responsable del todo el cluster y gestiona los recursos de los hosts.
+**Swarm Nodes:** Estos nodos deben ser accesibles por el nodo  master e integran un agente de nodo que registra el demonio del Docker referenciado, supervisa y actualizan el backend con el estado del nodo. 
+**Swarm Discovery:** Un servicio de descubrimiento que se basa en Docker Hub, utulizando un token para descubrir los nodos que forman parte de un cluster, tambien soporta servicios como consul y etcd.
 
 
 * Crear una tabla comparativa con al menos 5 diferencias entre Docker Swarm y Kubernetes
