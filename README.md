@@ -23,3 +23,13 @@ Proyecto Sistemas Distribuidos
 **Infraestructura inmutable :** el concepto básico de infraestructura inmutable es " reemplazar, no reparar ". La computación en nube permite este paradigma. Una excelente manera de entender esto es la descripción de Randy Bias de Pets vs Cattle. Lo importante para los sistemas nativos en la nube es separar las aplicaciones de la infraestructura, y tratar la infraestructura como algo inmutable es una excelente manera de lograrlo.
 
 Kubernetes no solo habilita todas las tecnologías descritas anteriormente, sino que también actúa como el " plano de control " para los sistemas nativos de la nube. Todo se logra por medio de su infraestuctura en planos mencionados en el diagrama de la pregunta 1 : Plano de datos, Plano de control, Plano de administración
+
+### Referencias
+
+* https://twitter.com/meinardi/status/707935835400884224
+* https://thenewstack.io/kubernetes-steering-the-ship-with-cloud-native-management/
+* https://kubernetes.io/docs/concepts/cluster-administration/networking/
+* https://kubernetes.io/docs/concepts/architecture/cloud-controller/
+
+
+
