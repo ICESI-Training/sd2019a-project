@@ -22,13 +22,22 @@ Incluya aspectos como las tecnologías empleadas para la comunicación de sus el
 **API server:** Es el que expone la API de kubernetes, se utiliza como punto de entrada de los comandos REST para controlar el cluster. Además, procesa valida y ejecuta todas las solicitudes REST.
 
 **Scheduler:** Observa los pods recién creados que no registran un nodo asignado y selecciona un nodo para que estos se puedan  ejecutar. Tambien tiene las siguientes funciones:
-          - Tiene en cuenta los recursos disponibles en cada nodo del clúster.
-          - Toma en cuenta los recursos necesarios para que se ejecute un determinado servicio.
+
+       -Tiene en cuenta los recursos disponibles en cada nodo del clúster.
+       -Toma en cuenta los recursos necesarios para que se ejecute un determinado servicio.
 
 Lo anterior sirve para saber dónde desplegar cada pod dentro del clúster.
 
+**Controller-manager:** Se encarga de ejecutar los controladores, un ejemplo de esto es el controlador de replicación encargado de mantener la cantidad correcta de pods en el clúster. 
 
+**etcd:** Es un almacén de datos clave de valor simple, distribuido y consistente. Sus principales funciones son:
 
+          -Almacenar la configuración compartida del clúster y para el descubrimiento de servicios
+          -Notificar al resto de nodos del clúster los cambios de configuración
+
+**kubelet:** Es el servicio dentro de cada nodo worker que sirve para comunicarse con el nodo master. Tambien  garantiza que los contenedores descritos en dicha configuración estén arriba y funcionando correctamente.
+
+**Pods:** Un pod es grupo de uno o más contenedores y una especificación sobre cómo ejecutar los contenedores.
 
 
 
