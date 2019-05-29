@@ -8,7 +8,11 @@ Proyecto Sistemas Distribuidos
 
 ## 1) arquitectura de docker swarm y kubernetes
 
-## 2) tabla comparativa entre Docker Swarm y Kubernetes
+![alt text](https://github.com/ediguerrero/sd2019a-project/blob/master/images/1.jpg)
+
+## 2) tabla comparativa entre Docker Swarm y Kubernetes 
+
+![alt text](https://github.com/ediguerrero/sd2019a-project/blob/master/images/2.jpg)
 
 ## 3) Tecnologías nativas en la nube con Kubernetes
 
@@ -46,7 +50,7 @@ es por ello que usar una solución nativa de kubernetes siempre sera una mejor o
 ## 5) monitoreo con Datadog y el monitoreo con Prometheus
 
 
-
+![alt text](https://github.com/ediguerrero/sd2019a-project/blob/master/images/5.jpg)
 
 ### Referencias
 
