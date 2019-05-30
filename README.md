@@ -77,3 +77,13 @@ Pese a que todos ofrecen distintas funcionalidades, su objetivo principal es per
 
 ![alt text](https://i2.wp.com/blog.docker.com/wp-content/uploads/f5755314-2f6c-46b3-a2e3-c3a6c4e17108.jpg?fit=668%2C598&ssl=1 "Calico Architecture")
 
+####Comparativa Kubernetes vs DockerSwarm
+
+|        Caracteristica        |         Kubernetes                 |            DockerSwarm           |
+|------------------------------|:-----------------------------------|:---------------------------------|
+|Instalación y Configuración   |  Mas compleja de realizar de forma manual. Involucra una gran cantidad de compoenentes como networking, puestos, almacenamiento y rangos de IP para que los pods funcionen de forma correcta|Sencillo de instalar y coonfigurar con pocas complicaciones.un solo conjunto de herramientas es utilizado para configurar el cluster |
+|Almacenamiento| Permite compartir volumenes entre los contenedores del mismo pod | permite compartir volumenes con cualquier contenedor en los otros nodos |
+|Administración | Provee una CLI, API REST y un panel para controlar y monitorear los servicios| provee una CLI para interactuar con los servicios| 
+|Networking | su modelo de red es plano, permitiendo que todos los pods se comuniquen entre si. Cuenta con multiples Plugins de red | se crea una red overlay entre los nodos que se unen al swarm|
+| Logging y monitoreo | cuenta con herramientas integradas para loggin y monitoreo| carece de herramientas integradas para esta funcionalidad|
+|Balanceo de carga | cada pod es expuesto a través de un servicio, el cual puede ser usado como balanceador de carga dentro de un cluster. tipicamente, ingress es usado| tiene un componente de DNS que puede ser usado para distribuir las solicitudes entrantes hacia un servicio. los servicios pueden correr en puerto especificados o ser asignados automaticamente|
