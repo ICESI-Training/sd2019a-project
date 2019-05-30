@@ -13,6 +13,9 @@
 
 
 ### Actividades
+
+### Primer Punto
+
 * Realice un gráfico donde muestre la arquitectura de docker swarm y kubernetes. Tenga en cuenta
 Incluya aspectos como las tecnologías empleadas para la comunicación de sus elementos, descubrimiento de servicio, entre otros
 
@@ -47,11 +50,23 @@ Lo anterior sirve para saber dónde desplegar cada pod dentro del clúster.
 
 
 **Swarm Master:** Es el responsable del todo el cluster y gestiona los recursos de los hosts.
-**Swarm Nodes:** Estos nodos deben ser accesibles por el nodo  master e integran un agente de nodo que registra el demonio del Docker referenciado, supervisa y actualizan el backend con el estado del nodo. 
+
+**Swarm Nodes:** Estos nodos deben ser accesibles por el nodo  master e integran un agente de nodo que registra el demonio del Docker referenciado, supervisa y actualizan el backend con el estado del nodo.
+
 **Swarm Discovery:** Un servicio de descubrimiento que se basa en Docker Hub, utulizando un token para descubrir los nodos que forman parte de un cluster, tambien soporta servicios como consul y etcd.
 
 
+### Segundo  Punto
 * Crear una tabla comparativa con al menos 5 diferencias entre Docker Swarm y Kubernetes
+
+
+![](Imagenes/TabladeComparación.png) 
+
+
+
+
+
+
 * Mencione las tecnologías de orquestación de contenedores nativas con kubernetes para al menos tres proveedores de servicios en la nube. Describa sus principales características y limitaciones
 * Describa las implicaciones a nivel de operaciones de emplear una solución de kubernetes nativa con respecto a desplegar kubernetes manualmente a través de scripts, por ejemplo: KOPS. Tenga en cuenta
 aspectos de costo y tolerancia a fallas.
