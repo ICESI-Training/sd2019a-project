@@ -56,7 +56,8 @@ Lo anterior sirve para saber dónde desplegar cada pod dentro del clúster.
 **Swarm Discovery:** Un servicio de descubrimiento que se basa en Docker Hub, utulizando un token para descubrir los nodos que forman parte de un cluster, tambien soporta servicios como consul y etcd.
 
 
-### Segundo  Punto
+###Segundo  Punto
+
 * Crear una tabla comparativa con al menos 5 diferencias entre Docker Swarm y Kubernetes
 
 
@@ -66,8 +67,33 @@ Lo anterior sirve para saber dónde desplegar cada pod dentro del clúster.
 
 
 
+###Tercer Punto
 
 * Mencione las tecnologías de orquestación de contenedores nativas con kubernetes para al menos tres proveedores de servicios en la nube. Describa sus principales características y limitaciones
+
+**IBM Cloud Kubernetes Service**
+
+Esta ofrece herramientas eficientes, una experiencia de usuario intuitiva y una seguridad incorporada para la rápida entrega de aplicaciones que se pueden enlazar a servicios de nube relacionados con IBM Watson®, IoT, DevOps y análisis de datos. Entre las más importantes caracteristicas se encuentran: 
+
+       - Gestión simplificada de clústeres: Proporciona una experiencia de GUI intuitiva para los usuarios de primera vez
+       - La seguridad y el aislamiento se incorporan, no se anexan:  Almacene imágenes de Docker en un registro cifrado y privado, e incluya la firma de imágenes con Docker Notary y la aplicación de seguridad de imagen.
+       - Servicios de nube y Watson en sus manos: Cree experiencias de cliente enriquecidas, con más de 170 servicios de IBM y de terceros para enriquecer sus aplicaciones, incluyendo datos cognitivos y meteorológicos.
+
+Entre las limitaciones se encuentran: 
+
+       - Los entornos de programación (lenguajes, librerías, etc.) están límitados por el proveedor
+       - Al cobrarse por tiempo de ejecución, y en algunos proveedores limitarse, se penaliza un consumo prologando en el tiempo
+       
+ **Cloud Code**
+ Ayuda al usuario cuando comienza a trabajar con un conjunto actualizado de muestras de Kubernetes preconfiguradas para la depuración, la creación y la implementación.
+ 
+Entre las caracteristicas se encuentran: 
+
+       -Cloud Code está diseñado específicamente para trabajar con Kubernetes, independientemente de su proveedor.
+       -Cloud Code proporciona plantillas y resaltado de errores para los archivos de Kubernetes yaml
+       -Cloud Code se integra fácilmente con las herramientas y servicios de DevOps existentes, incluidos Cloud Build y Stackdriver
+
+
 * Describa las implicaciones a nivel de operaciones de emplear una solución de kubernetes nativa con respecto a desplegar kubernetes manualmente a través de scripts, por ejemplo: KOPS. Tenga en cuenta
 aspectos de costo y tolerancia a fallas.
 
