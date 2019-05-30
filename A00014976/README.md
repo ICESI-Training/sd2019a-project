@@ -51,7 +51,7 @@ These controllers include:
 
 ![swarm](https://user-images.githubusercontent.com/35767872/58591856-d8dc5100-822c-11e9-8416-b24a7780128e.png)  
 
-- [x] Imagen tomada de https://image.slidesharecdn.com/awsmeetup16-160408140028/95/building-a-globalscale-multitenant-cloud-platform-on-aws-and-docker-lessons-learned-59-638.jpg?cb=1460124146  
+- [x] Image from https://image.slidesharecdn.com/awsmeetup16-160408140028/95/building-a-globalscale-multitenant-cloud-platform-on-aws-and-docker-lessons-learned-59-638.jpg?cb=1460124146  
 
 
 *Components description:*  
@@ -132,6 +132,54 @@ One of the main claims of Kubernetes is that it offers a standard for the differ
 
 ##### 4). Describa las implicaciones a nivel de operaciones de emplear una solución de kubernetes nativa con respecto a desplegar kubernetes manualmente a través de scripts, por ejemplo: KOPS. Tenga en cuenta aspectos de costo y tolerancia a fallas.  
 
+ Kops | Amazon EKS
+--------------- | ---------- |
+Selection of Kubernetes cluster version e.g. it support various versions | Amazon Controlled, and the recent deployments are slow than the mainline.  
+Initial instrumentation as by default, it will not add any RBAC or User management | Tightly coupled with Amazon IAM, and leverage the open source AWS authenticator for Access control   
+Fully managed by yourself It can be an advantage or disadvantage for the future use | Managed by AWS   
+Ensuring etcd cluster is up and running | Managed by AWS  
+Ensure Kube master node services are up and running. Kube api server, kube DNS, kube-scheduler etc. | Managed by AWS  
+CNI integration. Various options: Flannel Amazon-vpc-routed-eni Kubenet (default) | VPC level networking is already implemented at the network level, it means, the container routes will be published by default through Amazon using amazon-vpc-cni-k8s  
+KOPS maintains its state file in a S3 bucket | Maintained by AWS  
+nstance groups with tainting/labeling. | EKS doesn’t support and not even supported by EKSCTL.  
+Rotating the cluster | Manually, and one by one instance  
+
+When you choose a tool for any solution, you get the most close alternative according to your needs. EKS by AWS services offer so many configurations for deploy and management that can make your job easier.   
+
+##### 5). Crear una tabla comparativa con al menos 5 diferencias entre el monitoreo con Datadog y el monitoreo con Prometheus. Incluya aspectos como costo, obtención de métricas, alertas, entre otros   
+
+**Comparison** | Prometheus | Datadog
+--------------- | ---------- | ------------
+**Installation Process** |Prometheus is one of the monitoring solutions that the Kubernetes documentation specifically recommends, it’s unsurprising that the installation process is pretty easy. All you need to do it create a cluster role, a config map, and a deployment for Prometheus, most of which can be copy pasted from any number of tutorials online (here’s one to get you started). It takes only a couple minutes to get set up. However, Prometheus comes with a whole ecosystem of tools that support it. If you want more sophisticated dashboards and graphs, you’ll have to spin up Grafana and integrate with it. If you want a decent alerting system, you’ll need to install AlertManager. As you’ll see, this ends up making Prometheus a little more complicated to set up than Datadog. It’s still not difficult, but it’s not trivial either. | If you already have a Datadog account, getting metrics into Datadog is extremely simple. You’ll just configure RBAC permissions and install the Datadog agent as a DaemonSet. If you want to send custom metrics to Datadog, you’ll need to do a little more configuration. Datadog ships with visualizations and an alerting layer, so there’s no need to do any additional setup.    
+**Visualizations** | While Prometheus itself ships with a graphing tool, its functionality is fairly rudimentary. It’s more likely the case that any Prometheus installation actually relies on Grafana for visualization, and for the purpose of this comparison, we’ll consider Grafana’s visualization capabilities. Grafana makes it easy to create dashboards and graphs of your metrics. There are loads of different widgets and options that allow you to tailor your visualization to your needs. And it comes with an easy-on-the-eyes dark theme, if that’s a consideration for you. | Datadog provides very full-featured graphs and dashboards with great performance. Like Grafana, there are many widgets to create any dashboard you could think of. The tagging system is great and the query language is very robust. Datadog also comes with preset Kubernetes dashboards. Grafana and Datadog are very similar in their visualization capabilities. Both have every feature you need to get started and allow you to put together dashboards that will help you monitor your Kubernetes cluster. This one’s a tie. 
+**Kubernetes Events** | Prometheus doesn’t automatically expose Kubernetes events, so you’ll need a different solution to help you with this problem. There is a project on Github that will export Kubernetes events as Prometheus metrics. You can then import these event metrics into Grafana. | Datadog’s agent will gather events from your Kubernetes cluster and then dump them into the “Events” section of the app. It’s not entirely obvious, but you will have to enable it, and you will also have to understand and set up alerts for events to get value from them. As far as visualizing Kubernetes events, each event typically only lists the “Reason” part of an event, so you end up with an event containing a ReplicaSet and a string like “OOM” or “KILL.” The UI that shows pod labels is also pretty cramped and hard to read.  
+**Alerting and Notifications** | Just like Grafana is required to do any meaningful visualization, you’ll need to install AlertManager to get useful notifications from Prometheus. That said, once you’ve installed AlertManager, it’s got some pretty cool capabilities. You can group alerts together into one notification, or even silence specific alerts for a period of time. There’s also a neat feature called inhibition that allows you to silence certain classes of alerts when another type of event is active (consider the case that if CPU is high on a container, you might not care to know that the load is also high). | While Datadog lacks some of AlertManager’s cool notification rules like inhibition or granular silencing, it has an incredibly robust system of detecting error states. Datadog calls these alerts Monitors, and they can do anything from threshold and anomaly detection on a metric to checking an event for a specific string. By default, Datadog will notify your team through email, but many services have Datadog integrations that let you get notifications through your preferred incident management system.   
+
+
+Both Prometheus and Datadog are fully featured, robust monitoring solutions. However, they require extensive configuration to get maximum benefit from monitoring, and they assume that as the DevOps professional, you will know all the things that could possibly go wrong and how to check for them. However, Kubernetes is a relatively new tool, and even with experience, there is always more to learn. 
+
+Datadog is the leading service for cloud-scale monitoring. It is used by IT, operations, and development teams who build and operate applications that run on dynamic or hybrid cloud infrastructure. Start monitoring in minutes with Datadog. 
+In another hand, Prometheus is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
+
+
+
+
+
+
+
+
+
+
+
+### References:
+
+https://kubernetes.io/case-studies/
+https://kubernetes.io/case-studies/slingtv/
+https://www.computerworld.es/tecnologia/ovh-ofrece-kubernetes-administrados-en-su-nube-publica
+https://docs.ovh.com/es/hosting/gestion-de-una-base-de-datos-desde-un-alojamiento-compartido/
+https://azure.microsoft.com/es-es/services/kubernetes-service/
+https://keplerworx.com/kops-vs-amazon-eks/  
+https://www.bluematador.com/blog/how-to-monitor-your-kubernetes-cluster-prometheus-vs-datadog
 
 
 
