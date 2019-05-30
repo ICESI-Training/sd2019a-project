@@ -70,7 +70,12 @@ Lo anterior sirve para saber dónde desplegar cada pod dentro del clúster.
 * Mencione las tecnologías de orquestación de contenedores nativas con kubernetes para al menos tres proveedores de servicios en la nube. Describa sus principales características y limitaciones
 * Describa las implicaciones a nivel de operaciones de emplear una solución de kubernetes nativa con respecto a desplegar kubernetes manualmente a través de scripts, por ejemplo: KOPS. Tenga en cuenta
 aspectos de costo y tolerancia a fallas.
+
 * Crear una tabla comparativa con al menos 5 diferencias entre el monitoreo con Datadog y el monitoreo con Prometheus. Incluya aspectos como costo, obtención de métricas, alertas, entre otros
+
+
+![](Imagenes/DatadogyPrometheus.png) 
+
 
 ### Referencias
 * https://cloud.google.com/
@@ -78,3 +83,6 @@ aspectos de costo y tolerancia a fallas.
 * https://aws.amazon.com/
 * https://aprenderdevops.com/arquitectura-de-kubernetes/
 * https://www.adictosaltrabajo.com/2015/12/03/docker-compose-machine-y-swarm/
+* https://creadoresdigitales.com/monitoreo-de-sistemas-con-prometheus/
+* https://www.datadoghq.com/
+* https://hackernoon.com/kubernetes-vs-docker-swarm-a-complete-comparison-guide-15ba3ac6f750
