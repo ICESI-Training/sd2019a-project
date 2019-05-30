@@ -2,8 +2,8 @@
 
 **Universidad ICESI**  
 **Curso:** Sistemas Distribuidos  
-**Nombre:** Julián Niño
-**Tema:**  Orquestación de Contenedores  
+**Nombre:** Julián Niño  
+**Tema:** Orquestación de Contenedores  
 **Correo:** juliannino01@hotmail.com
 
 ### Objetivos
