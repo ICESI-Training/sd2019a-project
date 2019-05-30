@@ -77,7 +77,7 @@ Pese a que todos ofrecen distintas funcionalidades, su objetivo principal es per
 
 ![alt text](https://i2.wp.com/blog.docker.com/wp-content/uploads/f5755314-2f6c-46b3-a2e3-c3a6c4e17108.jpg?fit=668%2C598&ssl=1 "Calico Architecture")
 
-####Comparativa Kubernetes vs DockerSwarm
+#### Comparativa Kubernetes vs DockerSwarm
 
 |        Caracteristica        |         Kubernetes                 |            DockerSwarm           |
 |------------------------------|:-----------------------------------|:---------------------------------|
@@ -87,3 +87,63 @@ Pese a que todos ofrecen distintas funcionalidades, su objetivo principal es per
 |Networking | su modelo de red es plano, permitiendo que todos los pods se comuniquen entre si. Cuenta con multiples Plugins de red | se crea una red overlay entre los nodos que se unen al swarm|
 | Logging y monitoreo | cuenta con herramientas integradas para loggin y monitoreo| carece de herramientas integradas para esta funcionalidad|
 |Balanceo de carga | cada pod es expuesto a través de un servicio, el cual puede ser usado como balanceador de carga dentro de un cluster. tipicamente, ingress es usado| tiene un componente de DNS que puede ser usado para distribuir las solicitudes entrantes hacia un servicio. los servicios pueden correr en puerto especificados o ser asignados automaticamente|
+
+#### Tecnologias de orquestacion nativas para kubernetes de distintos proveedores de cloud
+
+##### AWS - AMAZON EKS
+Amazon Elastic Container Service for Kubernetes (EKS) es un servicio administrado que le permite ejecutar fácilmente Kubernetes en AWS sin necesidad de instalar, operar ni mantener su propio plano de control de Kubernetes. 
+Amazon EKS administra automáticamente la disponibilidad y escalabilidad de los nodos del plano de control de Kubernetes responsables de iniciar y detener contenedores, programar contenedores en máquinas virtuales, almacenar datos de clústeres y otras tareas. Amazon EKS detecta y reemplaza automáticamente nodos de plano de control con errores para cada clúster.
+
+* Plano de control de Kubernetes administrado: Amazon EKS proporciona un plano de control escalable y de alta disponibilidad que se ejecuta en múltiples zonas de disponibilidad de AWS.
+* Seguridad y redes: Amazon EKS facilita la seguridad de los clústeres Kubernetes, con funciones avanzadas e integraciones con los servicios de AWS y las soluciones de socios tecnológicos.
+* Registro: Amazon EKS está integrado con Amazon CloudWatch Logs y AWS CloudTrail para proporcionar visibilidad y realizar un seguimiento del historial de auditoría de su clúster y la actividad del usuario.
+* certificado: Amazon EKS ejecuta Kubernetes en sentido ascendente y cumple con los estandares de Kubernetes, por lo que puede utilizar todos los complementos y herramientas existentes de la comunidad.
+
+Desventajas:
+No "Agnostico": Amazon EKS es solo una solución para aquellas empresas que desean realizar trabajos en AWS. Es una mala elección si desea mover fácilmente las aplicaciones entre múltiples proveedores de nube pública. También tendrás que manejar la tarea de orquestación de contenedores en estas otras nubes.
+No dinámico: incluso si desea utilizar Amazon EKS como parte de un rompecabezas de múltiples nubes más grande, deberá manejar la parte de administración usted mismo. Esto puede plantear desafíos para los modelos dinámicos de múltiples nubes, donde las aplicaciones necesitan moverse rápida y fácilmente entre diferentes proveedores de la nube.
+Sin integración: por supuesto, como un servicio exclusivo de AWS, Amazon EKS no ofrece integraciones con otros servicios administrados de Kubernetes, y es probable que no lo haga en el corto plazo.
+
+##### AZURE - Azure Kubernetes Service AKS
+
+El Servicio Azure Kubernetes (AKS) es un servicio administrado de orquestación de contenedores, basado en el sistema de código abierto Kubernetes , que está disponible en la nube pública de Microsoft Azure.
+AKS características y beneficios
+Los principales beneficios de AKS son la flexibilidad, la automatización y la reducción de los gastos generales de gestión para administradores y desarrolladores. Por ejemplo, AKS configura automáticamente todos los maestros y nodos de Kubernetes durante el proceso de implementación y maneja una variedad de otras tareas, incluida la integración de Azure Active Directory, las conexiones a los servicios de monitoreo y la configuración de funciones de red avanzadas, como el enrutamiento de aplicaciones HTTP.
+Los nodos AKS pueden escalar hacia arriba o hacia abajo para adaptarse a las fluctuaciones en las demandas de recursos. Para poder de procesamiento adicional, AKS también admite grupos de nodos habilitados por unidades de procesamiento de gráficos ( GPU ) para cargas de trabajo intensivas en cómputo.
+ AKS a través proporciona portal de administración de AKS, una interfaz de línea de comandos (CLI) de AKS o el uso de plantillas a través de herramientas como Azure Resource Manager. El servicio también se integra con el Registro de Contenedores de Azure (ACR) para el almacenamiento de imágenes de Docker, y admite el uso de datos persistentes con los Discos de Azure.
+ Desventajas
+ -Tiempos de aprovisionamiento elevados
+ -Tiempos de montado elevados para volumenes (aprox 7 min)
+ -Demoras al actualizar la duración del cluster
+ -Restricciones al mismo tipo de nodo
+ 
+ 
+ ##### GOOGLE - GCE
+ 
+Google Container Engine es un  administrador de clústeres y sistema de organización para ejecutar contenedores de Docker. Permite programar los contenedores en el clúster y los administra automáticamente según los requisitos que sean definidos (por ejemplo, de CPU y memoria). Se basa en el sistema de código abierto Kubernetes y uno de sus puntos duertes consiste en la flexibilidad de aprovechar una infraestructura de nube local, híbrida o pública.
+
+Google GCE permite configurar un cluester en pocos minutos, ademas cuenta con la posibilidad de ejecutar administración declarativa de los requisitos de los contenedores tales como CPU,Memoria, replicas y politicas de persistencia haciendo uso de un archivo en formato JSON.
+
+* Entre sus principales caracteristicas hace enfasis en: 
+* Compatibilidad con Docker
+* Registro de contenedores privado
+* Escalabilidad
+* Registro y supervisión con los servicios stackdriver logging y monitoring
+* Completamente administrado
+* Soporte de Redes híbridas
+* Administración de identidades y accesos
+
+Desventajas (reportadas por usuarios):
+* Documentación mejorable
+* poca observabilidad, plataforma de monitoreo mejorable
+* errores ocasionales del balanceador de carga
+* Algoritmo contra fraude poco flexible
+
+La siguiente tabla proporciona una compartativa interesante entre las 3 tecnologias :) ( a febrero de 2019) :
+
+![alt text](https://i1.wp.com/kubedex.com/wp-content/uploads/2018/10/Screen-Shot-2018-10-14-at-11.53.07.png?resize=1024%2C799&ssl=1 "Comparativa kuberntes in cloud providers")
+
+
+
+
+
