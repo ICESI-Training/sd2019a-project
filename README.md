@@ -2,7 +2,7 @@
 
 **Universidad ICESI**  
 **Curso:** Sistemas Distribuidos  
-**Nombre:** Julián Niño 
+**Nombre:** Julián Niño
 **Tema:**  Orquestación de Contenedores  
 **Correo:** juliannino01@hotmail.com
 
@@ -124,6 +124,33 @@ Entre las limitaciones se encuentran:
 aspectos de costo y tolerancia a fallas.
 
 
+Kops: sirve para crear y gestionar clusters de Kubernetes , en producción y con alta disponibilidaddesde línea de comandos. 
+
+Si se hace por KOPS, se deben hacer los siguientes pasos: 
+
+        -Crear una cuenta de usuario especifica
+        -Crear un grupo en AWS llamado kops
+        -Se corre el debido vagrant 
+        -Se instala un Dashboard
+        
+  Mientras que Amazon EKS ejecuta la infraestructura de administración de Kubernetes por usted en varias zonas de disponibilidad de AWS a los fines de eliminar un único punto de error y sus mas importantes caracteristicas son:
+  
+       -Amazon EKS ejecuta la infraestructura de administración de Kubernetes en varias zonas de disponibilidad de AWS
+       -Se configuran automáticamente canales de comunicación seguros y cifrados entre sus nodos de trabajo y los planos de control administrados
+       -Amazon EKS ejecuta Kubernetes ascendente y cuenta con una certificación de conformidad con Kubernetes
+  
+  
+ Para compararlos tenemos que: 
+ 
+       - En KOPS La instrumentación inicial, por defecto, no agregará ningún RBAC o administración de usuarios. Mientras que en Amazon EKS es combinado estrechamente con Amazon IAM, y aprovechar el autenticador de código abierto de AWS para el control de acceso.
+ 
+       -  En KOPS Totalmente administrado por usted mismo Puede ser una ventaja o desventaja para el uso futuro. Mientras que en EKS es gestionado por AWS
+       
+       - En KOPS se asegura que el clúster de etcd está en funcionamiento. Mientras que en EKS es gestionado por AWS
+  
+        
+        
+
 
 ----------------------------------------------------------------------------------------------------------------
 ### Quinto Punto
@@ -144,3 +171,6 @@ aspectos de costo y tolerancia a fallas.
 * https://hackernoon.com/kubernetes-vs-docker-swarm-a-complete-comparison-guide-15ba3ac6f750
 * https://cloud.google.com/kubernetes-engine/?hl=Es-419
 * https://www.ibm.com/co-es/cloud/container-service
+* https://www.adictosaltrabajo.com/2018/09/05/kubernetes-en-aws-con-kops/
+* https://aws.amazon.com/es/eks/
+* https://keplerworx.com/kops-vs-amazon-eks/
