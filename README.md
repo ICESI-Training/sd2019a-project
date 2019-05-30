@@ -4,6 +4,8 @@ Proyecto Sistemas Distribuidos
 
 
 ## Comparacion DockerSwarm vs Kubernetes
+### DockerSwarm
+![alt text](http://sirile.github.io/images/Swarm_target_architecture.png "Arquitectura basica de kubernetes")
 
 ### Arquitectura de Kubernetes
 
@@ -88,9 +90,9 @@ Pese a que todos ofrecen distintas funcionalidades, su objetivo principal es per
 | Logging y monitoreo | cuenta con herramientas integradas para loggin y monitoreo| carece de herramientas integradas para esta funcionalidad|
 |Balanceo de carga | cada pod es expuesto a través de un servicio, el cual puede ser usado como balanceador de carga dentro de un cluster. tipicamente, ingress es usado| tiene un componente de DNS que puede ser usado para distribuir las solicitudes entrantes hacia un servicio. los servicios pueden correr en puerto especificados o ser asignados automaticamente|
 
-#### Tecnologias de orquestacion nativas para kubernetes de distintos proveedores de cloud
+## Tecnologias de orquestacion nativas para kubernetes de distintos proveedores de cloud
 
-##### AWS - AMAZON EKS
+### AWS - AMAZON EKS
 Amazon Elastic Container Service for Kubernetes (EKS) es un servicio administrado que le permite ejecutar fácilmente Kubernetes en AWS sin necesidad de instalar, operar ni mantener su propio plano de control de Kubernetes. 
 Amazon EKS administra automáticamente la disponibilidad y escalabilidad de los nodos del plano de control de Kubernetes responsables de iniciar y detener contenedores, programar contenedores en máquinas virtuales, almacenar datos de clústeres y otras tareas. Amazon EKS detecta y reemplaza automáticamente nodos de plano de control con errores para cada clúster.
 
@@ -104,7 +106,7 @@ No "Agnostico": Amazon EKS es solo una solución para aquellas empresas que dese
 No dinámico: incluso si desea utilizar Amazon EKS como parte de un rompecabezas de múltiples nubes más grande, deberá manejar la parte de administración usted mismo. Esto puede plantear desafíos para los modelos dinámicos de múltiples nubes, donde las aplicaciones necesitan moverse rápida y fácilmente entre diferentes proveedores de la nube.
 Sin integración: por supuesto, como un servicio exclusivo de AWS, Amazon EKS no ofrece integraciones con otros servicios administrados de Kubernetes, y es probable que no lo haga en el corto plazo.
 
-##### AZURE - Azure Kubernetes Service AKS
+### AZURE - Azure Kubernetes Service AKS
 
 El Servicio Azure Kubernetes (AKS) es un servicio administrado de orquestación de contenedores, basado en el sistema de código abierto Kubernetes , que está disponible en la nube pública de Microsoft Azure.
 AKS características y beneficios
@@ -118,7 +120,7 @@ Los nodos AKS pueden escalar hacia arriba o hacia abajo para adaptarse a las flu
  -Restricciones al mismo tipo de nodo
  
  
- ##### GOOGLE - GCE
+ ### GOOGLE - GCE
  
 Google Container Engine es un  administrador de clústeres y sistema de organización para ejecutar contenedores de Docker. Permite programar los contenedores en el clúster y los administra automáticamente según los requisitos que sean definidos (por ejemplo, de CPU y memoria). Se basa en el sistema de código abierto Kubernetes y uno de sus puntos duertes consiste en la flexibilidad de aprovechar una infraestructura de nube local, híbrida o pública.
 
@@ -141,9 +143,28 @@ Desventajas (reportadas por usuarios):
 
 La siguiente tabla proporciona una compartativa interesante entre las 3 tecnologias :) ( a febrero de 2019) :
 
+
 ![alt text](https://i1.wp.com/kubedex.com/wp-content/uploads/2018/10/Screen-Shot-2018-10-14-at-11.53.07.png?resize=1024%2C799&ssl=1 "Comparativa kuberntes in cloud providers")
 
 
+## Soluciones Nativas vs Soluciones manuales
+
+Para esto partiremos de un analisis que compare Kops con EKS en AWS, siendo la mayoria de los criterios aplicables a cualquier otro cloud provider.
+Cuando se implementa una solución como kops, depende de nosotros configurar y administrar muchos de los servicios que comunmente serian administrados por nuestro proveedor de nube. Al desplegar un cluster de kubernetes con kops tendremos la instrumentacion por defecto, es decir, no contaremos con RBAC o administracion de usuarios, a diferencia de si utilizaremos el servicio de EKS, el cual brinde integracion con aws iam y el autenticador de codigo abierto de aws para control de acceso.
+Al usar una solución como Kops deberemos encargarnos (para bien o para mal) de administrar una serie de aspectos como el estado del cluster, de los nodos y de nuestro almacenamiento etcd, a diferencia de lo que ocurriria en una solución como aws eks.
+Por otro lado, con Kops tambien tendremos de encargarnos del networking con cualquiera de las opciones de CNI comptibles con amazon mientras que en una solución nativa tendremos integracion con la solucion de red nativa, vpc en el caso de eks.
+
+El administrar todos los recursos que implica utilizar kops implicaa contar con una persona que cuente con los conocimientos necesarios para ello, ademas de necesitar mas tiempo a nivel de planeacion antes de desplegar un cluster. Dado que en las soluciones nativas muchos de los servicios son administrados por el proveedor del servicio se reducen considerablemente los tiempos de despliegue y se facilita la administracion a costa de un mayor valor economico. Por otro lado, la soluciones nativas al ser administradas en muchos aspectos son mucho menos persnoalizables y adaptables.
 
 
+## Datadog Vs Prometheus
 
+|        Caracteristica        |         Datadog                 |            Prometheus           |
+|------------------------------|:-----------------------------------|:---------------------------------|
+| Licencia | comercial | de codigo abierto |
+| precio | planes de infraestructura desde $15 por host/mes y $31 incluyendo APM | gratuito |
+| modelo de despliegue | servicio en la nube con agente local | contenedor, instalacion local |
+| tipo de solución | completa (logs, monitoreo y alertas) | no incluye logs |
+|dashboard | incluido | disponible mediante grafana |
+| service discovery | disponible | disponible mediante modulos |
+| Alertas | Prometheus alert manager | built in GUI |
