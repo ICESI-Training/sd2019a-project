@@ -61,4 +61,19 @@ Entre sus principales componentes se encuentran:
 
 * **Kubectl**: una herramienta de line ade comandos para comunicarse con el API server y enviar comandos al nodo maestro.
 
+En cuanto a networking, Kubernetes permite la incorporacion de plugins que cumplen con el modelo de red de kubernetes, el cual se basa en que:
+* todos los pods se pueden comunicar con otros pots sin usar NAT
+* Todos los nodos se pueden comunicar con todos los pots sin usar NAT.
+* La IP con la que un POD ve de si mismo es la misma que los demas ven de él.
+
+Estos  Plugins permiten una serie de funcionalidades de red tales como:
+* Container-to-Container networking
+* Pod-to-Pod networking
+* Pod-to-Service networking
+* Internet-to-Service networking
+
+Entre los mas destacados se encuentran Calico, Flannel, Canal y Wave Net, por mencionar Algunos.
+Pese a que todos ofrecen distintas funcionalidades, su objetivo principal es permitir el networking. La infraestructura de Calico, en general aplicable para todos, es la siguiente:
+
+![alt text](https://i2.wp.com/blog.docker.com/wp-content/uploads/f5755314-2f6c-46b3-a2e3-c3a6c4e17108.jpg?fit=668%2C598&ssl=1 "Calico Architecture")
 
