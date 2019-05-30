@@ -55,8 +55,8 @@ Lo anterior sirve para saber dónde desplegar cada pod dentro del clúster.
 
 **Swarm Discovery:** Un servicio de descubrimiento que se basa en Docker Hub, utulizando un token para descubrir los nodos que forman parte de un cluster, tambien soporta servicios como consul y etcd.
 
-
-###Segundo  Punto
+-----------------------------------------------------------------------------------------------------------------------------------
+### Segundo  Punto
 
 * Crear una tabla comparativa con al menos 5 diferencias entre Docker Swarm y Kubernetes
 
@@ -66,8 +66,8 @@ Lo anterior sirve para saber dónde desplegar cada pod dentro del clúster.
 
 
 
-
-###Tercer Punto
+----------------------------------------------------------------------------------------------------------------------------
+### Tercer Punto
 
 * Mencione las tecnologías de orquestación de contenedores nativas con kubernetes para al menos tres proveedores de servicios en la nube. Describa sus principales características y limitaciones
 
@@ -93,10 +93,40 @@ Entre las caracteristicas se encuentran:
        -Cloud Code proporciona plantillas y resaltado de errores para los archivos de Kubernetes yaml
        -Cloud Code se integra fácilmente con las herramientas y servicios de DevOps existentes, incluidos Cloud Build y Stackdriver
 
+Entre las limitaciones se encuentran: 
+
+       -los entornos están límitados por el proveedor
+       - Poca documentación 
+
+**Kubernetes Engine**
+
+Kubernetes Engine se lanzó en 2015, con base en los más de 12 años de experiencia de Google en la ejecución de servicios como Gmail y YouTube en contenedores. Permite la puesta en marcha de Kubernetes sin demoras, ya que elimina por completo la necesidad de instalar, administrar y operar tus propios clústeres.
+
+
+Entre las caracteristicas se encuentran: 
+
+       - Implementa una gran variedad de aplicaciones: Kubernetes Engine permite el desarrollo y la iteración de aplicaciones con más rapidez, ya que facilita implementar, actualizar y administrar aplicaciones y servicios. 
+       - Operación fluida con alta disponibilidad: Controla tu entorno desde el panel integrado de Kubernetes Engine en la consola de Google Cloud
+      
+       - Escalabilidad sin dificultades para satisfacer la demanda: El ajuste de escala automático de Kubernetes Engine te permite administrar la demanda creciente de tus servicios por parte de los usuarios y los mantiene disponibles cuando más se necesitan.
+
+Entre las limitaciones se encuentran:
+       
+       - Un máximo de 50 clústeres por zona, más 50 clústeres regionales por región
+       - Un máximo de 5,000 nodos por clúster
+       - Un máximo de 1,000 nodos por clúster si usas GKE Ingress Controller
+       - 100 pods por nodo
+
+--------------------------------------------------------------------------------------------------------------------------------
+### Cuarto Punto
 
 * Describa las implicaciones a nivel de operaciones de emplear una solución de kubernetes nativa con respecto a desplegar kubernetes manualmente a través de scripts, por ejemplo: KOPS. Tenga en cuenta
 aspectos de costo y tolerancia a fallas.
 
+
+
+----------------------------------------------------------------------------------------------------------------
+### Quinto Punto
 * Crear una tabla comparativa con al menos 5 diferencias entre el monitoreo con Datadog y el monitoreo con Prometheus. Incluya aspectos como costo, obtención de métricas, alertas, entre otros
 
 
@@ -112,3 +142,5 @@ aspectos de costo y tolerancia a fallas.
 * https://creadoresdigitales.com/monitoreo-de-sistemas-con-prometheus/
 * https://www.datadoghq.com/
 * https://hackernoon.com/kubernetes-vs-docker-swarm-a-complete-comparison-guide-15ba3ac6f750
+* https://cloud.google.com/kubernetes-engine/?hl=Es-419
+* https://www.ibm.com/co-es/cloud/container-service
