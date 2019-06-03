@@ -15,10 +15,10 @@ Los dos nodos tienen los siguientes roles diferentes en el modo de enjambre:
 
 **El  nodo administrador** se encarga de enviar las tareas al nodo de trabajo. Una tarea es una unidad de trabajo que transporta un contenedor Docker y los comandos que se ejecutan dentro del contenedor.
 
-**El  nodo worker ** ejecuta servicios de enjambre y recibe y ejecuta tareas enviadas desde nodos de administrador.
+**El  nodo worker** ejecuta servicios de enjambre y recibe y ejecuta tareas enviadas desde nodos de administrador.
 ![alt text](http://sirile.github.io/images/Swarm_target_architecture.png "Arquitectura basica de swarm")
 
-Dockerswarm proporciona una red overlay para la comunicacion entre todos los nodos del swarm. 
+Dockerswarm proporciona una red overlay para la comunicacion entre todos los nodos del swarm. AIn embargo, no incluye herramientas para recoleccion de logs, monitoreo nidescubrimiento de servicios, por lo que se puede recurrir a herramientas como logstash y kibana, prometheus y consul.
 
 La estructura basica de docker swarm se distribuye entre servicios y tareas.
 
