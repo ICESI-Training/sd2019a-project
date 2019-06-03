@@ -1,11 +1,42 @@
 # sd2019a-project
 Proyecto Sistemas Distribuidos
 
+**Nombre:** Daniel Perez Garcia
+**correo:** danielperga97@outlook.com
 
 
 ## Comparacion DockerSwarm vs Kubernetes
 ### DockerSwarm
-![alt text](http://sirile.github.io/images/Swarm_target_architecture.png "Arquitectura basica de kubernetes")
+![alt text](https://blog.octo.com/wp-content/uploads/2017/08/swarm-diagram-1024x480.png "arquitectura basica de dockerswarm")
+
+Hay dos tipos de nodos en Docker Swarm: el nodo administrador y el nodo worker. El concepto de un nodo es una instancia del  Docker engine en el swarm. Es posible ejecutar uno o más nodos en una sola computadora física o máquina virtual en la nube. También es posible ejecutar nodos distribuidos en múltiples máquinas físicas y máquinas virtuales en la nube.
+
+Los dos nodos tienen los siguientes roles diferentes en el modo de enjambre:
+
+**El  nodo administrador** se encarga de enviar las tareas al nodo de trabajo. Una tarea es una unidad de trabajo que transporta un contenedor Docker y los comandos que se ejecutan dentro del contenedor.
+
+**El  nodo worker ** ejecuta servicios de enjambre y recibe y ejecuta tareas enviadas desde nodos de administrador.
+![alt text](http://sirile.github.io/images/Swarm_target_architecture.png "Arquitectura basica de swarm")
+
+Dockerswarm proporciona una red overlay para la comunicacion entre todos los nodos del swarm. 
+
+La estructura basica de docker swarm se distribuye entre servicios y tareas.
+
+Un servicio es la definición de las tareas a ejecutar en el administrador o en los nodos worker. Es la estructura central del swarm y la raíz principal de la interacción del usuario con el mismo.
+
+Cuando se crea un servicio, especificas qué imagen de contenedor usar y qué comandos ejecutar dentro de los contenedores en ejecución.
+
+En el modelo de servicios replicados , el administrador del swarm  distribuye un número específico de tareas de réplica entre los nodos en función de la escala que establezca en el estado deseado.
+
+Para los servicios globales , el swarm ejecuta una tarea para el servicio en cada nodo disponible en el clúster.
+
+Una tarea lleva un contenedor Docker y los comandos para ejecutarse dentro del contenedor. Es la unidad de programación atómica del swarm. Los nodos del administrador asignan tareas a los nodos worker según el número de réplicas establecidas en la escala de servicio. Una vez que se asigna una tarea a un nodo, no se puede mover a otro nodo. Solo puede ejecutarse en el nodo asignado o fallar.
+
+##### balanceo de carga
+
+El administrador del swarm utiliza el balanceador de carga ingress para exponer los servicios que desea que estén disponibles externamente para el swarm. El administrador del swarm puede asignar automáticamente  un puerto a un servicio publicado o puede configurar el puerto  para el servicio. Puede especificar cualquier puerto no utilizado. Si no especifica un puerto, el administrador del swarm asigna al servicio un puerto en el rango 30000-32767.
+
+El modo de enjambre tiene un componente DNS interno que asigna automáticamente a cada servicio en el swarm una entrada de DNS. El administrador de enjambres utiliza el balanceador de carga interno para distribuir las solicitudes entre los servicios dentro del clúster en función del nombre DNS del servicio.
 
 ### Arquitectura de Kubernetes
 
@@ -168,3 +199,15 @@ El administrar todos los recursos que implica utilizar kops implicaa contar con 
 |dashboard | incluido | disponible mediante grafana |
 | service discovery | disponible | disponible mediante modulos |
 | Alertas | Prometheus alert manager | built in GUI |
+
+### Referencias
+https://www.bluematador.com/blog/how-to-monitor-your-kubernetes-cluster-prometheus-vs-datadog
+https://docs.docker.com/engine/swarm/key-concepts/
+https://www.trustradius.com/products/google-kubernetes-engine/reviews/pros-and-cons
+https://www.g2.com/products/azure-kubernetes-service-aks/reviews
+https://medium.com/faun/current-limitations-running-azure-aks-in-production-55b830e89f3c
+https://azure.microsoft.com/en-us/services/kubernetes-service/
+https://keplerworx.com/kops-vs-amazon-eks/
+https://www.bluematador.com/blog/kubernetes-on-aws-eks-vs-kops
+https://aws.amazon.com/es/eks/features/
+https://kubedex.com/google-gke-vs-microsoft-aks-vs-amazon-eks/
